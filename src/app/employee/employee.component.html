@@ -1,0 +1,33 @@
+
+  <div>
+    <label>Add employee:
+      <input #empName />
+    </label>
+    <label>Address:
+      <input #address />
+    </label>
+    <button (click)="add(empName.value,address.value); empName.value=''; address.value=''">
+      Add
+    </button>
+  </div>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Emp ID</th>
+      <th>Emp Name</th>
+      <th>Emp Address</th>
+      <th>Operations</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let emp of employeeRows; let i = index">
+      <td>{{emp.id}}</td>
+      <td>{{emp.name}}</td>
+      <td>{{emp.address}}</td>
+      <td><button id="edit{{i}}" routerLink="detailemp/{{emp.id}}" >Update</button></td>
+      <td><button (click)="delete(emp.id)" id="delete{{emp.id}}">Delete</button></td>
+    </tr>
+
+  </tbody>
+</table>
